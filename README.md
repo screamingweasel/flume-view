@@ -1,7 +1,7 @@
 #### Flume Monitor Ambari view
 Simple Ambari View webpage to read agents.json file produced by check_flume.py
 
-Author: [James Barnet](https://www.linkedin.com/in/jmbarnett)
+Author: [James Barnett](https://www.linkedin.com/in/jmbarnett)
 
 -----------------
 		
@@ -18,5 +18,5 @@ This page uses client-side javascript to read a json file in its' own root folde
 - Each time that a new version of a view is installed it created a new folder. Assuming this version (1.0.1) do the following
 -   ln /tmp/agents.json /var/lib/ambari-server/resources/views/work/FLUME_VIEW{1.0.1}/agents.json
 
-- Many thanks to Ali Bajwa for a great tutorial on views at https://github.com/abajwa-hw/iframe-view.git
+Many thanks to Ali Bajwa for a great tutorial on views at https://github.com/abajwa-hw/iframe-view.git. You can also find some greate view resources at https://github.com/hortonworks-gallery
 
