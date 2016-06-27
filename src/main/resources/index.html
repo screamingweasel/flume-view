@@ -1,0 +1,96 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        body{
+            text-align: left;
+            font-family: arial;
+        }
+		table.gridtable {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #666666;
+			border-collapse: collapse;
+			valign: top;
+		}
+		table.gridtable th {
+			border-width: 1px;
+			padding: 11px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #dedede;
+		}
+		table.gridtable td {
+			border-width: 1px;
+			padding: 11px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #ffffff;
+			valign: top;
+		}
+	</style>
+	
+    <script>
+      function makeSummary(data) {
+      	var h = "";
+      	
+		var h = "<table class='gridtable'><thead><tr><td>Status</td><td>Host</td><td>Last Check</td></tr></thead>";
+		$.each( data, function( key, value ) {
+			h=h+"<tr>";
+			h=h+"<td>" + value["status"].toString(); + "</td>";
+			h=h+"<td>" + value["host"].toString() + "</td>";
+			h=h+"<td>" + value["date"].toString() + "</td>";
+			h=h+"</tr>";
+		});
+    	  	
+    	h = h+"</table>"
+      	return h;
+      }
+      
+      function makeMetrics(data) {
+      	var h = "";
+      	
+		var h = "<table class='gridtable'><thead><tr><td>Status</td><td>Host</td><td>Last Check</td><td>Metrics</td></tr></thead>";
+		$.each( data, function( key, value ) {
+			h=h+"<tr>";
+			h=h+"<td>" + value["status"].toString(); + "</td>";
+			h=h+"<td>" + value["host"].toString() + "</td>";
+			h=h+"<td>" + value["date"].toString() + "</td>";
+			h=h+"<td>"
+			$.each( value["metrics"], function( k, v ) {
+				h=h + k.toString() + ":" + "<br/>";
+				$.each( v, function( m, mv ) {
+					h=h + m.toString() + ":" + mv.toString() + "<br/>";
+				});
+			});
+			h=h+"</td>";
+			h=h+"</tr>";
+		});
+    	  	
+    	h = h+"</table>"
+      	return h;
+      }
+      
+       $(document).ready(function() {
+                $.ajax({
+                    url: "agents.json",
+                    dataType: "json",
+                    success: function(data) {
+						$('#summary').html(makeSummary(data));
+						$('#metrics').html(makeMetrics(data));
+                    }
+                });
+            });
+    </script>
+</head>
+<body>
+    <h1>Flume Monitor</h1>
+    <h2>Summary</h2>
+    <span id="summary"></span>
+    <br/>
+    <h2>Detail Metrics</h2>
+    <span id="metrics"></span>    
+</body>
+</html>
