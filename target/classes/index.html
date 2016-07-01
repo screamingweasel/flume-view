@@ -36,10 +36,11 @@
       function makeSummary(data) {
       	var h = "";
       	
-		var h = "<table class='gridtable'><thead><tr><td>Status</td><td>Host</td><td>Last Check</td></tr></thead>";
+		var h = "<table class='gridtable'><thead><tr><td>Name</td><td>Status</td><td>Host</td><td>Last Check</td></tr></thead>";
 		$.each( data, function( key, value ) {
 			h=h+"<tr>";
-			h=h+"<td>" + value["status"].toString(); + "</td>";
+			h=h+"<td>" + key.toString() + "</td>";
+			h=h+"<td>" + value["status"].toString() + "</td>";
 			h=h+"<td>" + value["host"].toString() + "</td>";
 			h=h+"<td>" + value["date"].toString() + "</td>";
 			h=h+"</tr>";
@@ -52,10 +53,11 @@
       function makeMetrics(data) {
       	var h = "";
       	
-		var h = "<table class='gridtable'><thead><tr><td>Status</td><td>Host</td><td>Last Check</td><td>Metrics</td></tr></thead>";
+		var h = "<table class='gridtable'><thead><tr><td>Name</td><td>Status</td><td>Host</td><td>Last Check</td><td>Metrics</td></tr></thead>";
 		$.each( data, function( key, value ) {
 			h=h+"<tr>";
-			h=h+"<td>" + value["status"].toString(); + "</td>";
+			h=h+"<td>" + key.toString() + "</td>";
+			h=h+"<td>" + value["status"].toString() + "</td>";
 			h=h+"<td>" + value["host"].toString() + "</td>";
 			h=h+"<td>" + value["date"].toString() + "</td>";
 			h=h+"<td>"
