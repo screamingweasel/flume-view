@@ -1,0 +1,4 @@
+{
+	"flume01": {"host":"aeg-dn01.cloud.hortonworks.com:41010","date":"","status":"", "metrics":{}}, 
+	"flume02": {"host":"aeg-dn01.cloud.hortonworks.com:41011","date":"","status":"", "metrics":{}}
+}
