@@ -1,6 +1,6 @@
 <html>
 <head>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <style>
         body{
             text-align: left;
@@ -80,8 +80,8 @@
                     url: "agents.json",
                     dataType: "json",
                     success: function(data) {
-						$('#summary').html(makeSummary(data));
-						$('#metrics').html(makeMetrics(data));
+		    $('#summary').html(makeSummary(data));
+		    $('#metrics').html(makeMetrics(data));
                     }
                 });
             });

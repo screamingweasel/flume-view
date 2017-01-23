@@ -17,8 +17,8 @@ limitations under the License. Kerberos, LDAP, Custom. Binary/Htt
 <view>
   <name>FLUME_VIEW</name>
   <label>Flume View</label>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <instance>
-    <name>INSTANCE_1</name>
+    <name>FLUME_VIEW_1</name>
   </instance>
 </view>
