@@ -6,32 +6,70 @@ import time
 import requests
 import json
 import sys
+import syslog
+import smtplib
+from email.mime.text import MIMEText
 from pprint import pprint
+from datetime import date
 from datetime import datetime
 
 STATUS_ERROR="ERROR"
 STATUS_OK="OK"
 max_trys = 3 # Number of trys to reach a flume agent before assuming dead
 sleep_sec = 5 # Seconds to sleep between trys
-user = 'admin'
-passwd = 'admin'	
-host = "sandbox.hortonworks.com:34546"
+user = 'ambari'
+passwd = 'ambari@123'	
 out_file = "/tmp/agents.json"
-#dttm="{:%Y-%m-%d %H:%M:%S}".format(datetime.now())
+agent_file = "./check_flume.json"
+
+# Mail Related constants
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+SMTP_USERNAME = "email@gmail.com"
+SMTP_PASSWORD = "yourpassword"
+
+EMAIL_TO = ["ms683k@att.com", "jbarnett@hortonworks.com"]
+EMAIL_FROM = "ms683k@att.com"
+EMAIL_SUBJECT = "Flume Agent Alerts"
+DATE_FORMAT = "%d/%m/%Y"
+EMAIL_SPACE = ", "
+
 dttm=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-print (dttm)
 
 ##################################################################################################
 # Function to load agent metadata 
 ##################################################################################################
 def getAgents():
-	# TODO: read from file
-	agents = {
-		'Agent1': {'host':'sandbox.hortonworks.com:35455','date':'','status':'', 'metrics':{}}, 
-		'Agent2': {'host':'sandbox.hortonworks.com:34546','date':'','status':'', 'metrics':{}},
-                'Agent3': {'host':'sandbox.hortonworks.com:34547','date':'','status':'', 'metrics':{}}
-		}
+
+	try:
+		print "Loading agents from " + agent_file 
+		agents = json.loads(open(agent_file).read())
+	except:
+		print "Error opening agent configuration file: " + str(sys.exc_info()[0])
+		sys.exit()
+	
 	return agents
+	
+##################################################################################################
+# Function to load agent metadata 
+##################################################################################################
+def sendEmail(msg):
+	print "Sending alert email..."
+
+	try:
+		msg = MIMEText(msg)
+		msg['Subject'] = EMAIL_SUBJECT
+		msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
+		msg['From'] = EMAIL_FROM
+		mail = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+		#mail.starttls()
+		mail.login(SMTP_USERNAME, SMTP_PASSWORD)
+		mail.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+		mail.quit()
+	except:
+		print "Error sending email: " + str(sys.exc_info()[0])
+	finally:
+		return
 	
 ##################################################################################################
 # Function to check results and send alerts
@@ -42,12 +80,14 @@ def checkAgents(agents):
 	for key, value in agents.iteritems():
 		print (key, str(value['status']))
 		if (str(value['status']) == STATUS_ERROR):
-			msg = msg + "Unable to reach agent " + str(key) + " at " + str(value['host']) + "\n"
+			errMsg = "Unable to reach agent " + str(key) + " at " + str(value['host'])
+			syslog.syslog(syslog.LOG_ERR, errMsg)
+			msg = msg + errMsg + "\n"
 
 	if (msg != ""):
 		print "Errors found in Flume Agents"
 		print msg	
-		# TODO: Email
+		sendEmail(msg)
 		
 	return
 
@@ -89,6 +129,7 @@ def checkFlumeAgent(user, passwd, host):
 # Main - Create a list of Agents to be monitored, check them, and print results
 ##################################################################################################
 if __name__ == "__main__":
+	print str(sys.argv[0]) + " starting at " + dttm
 	requests.packages.urllib3.disable_warnings()
 	
 	agents = getAgents()
@@ -105,7 +146,8 @@ if __name__ == "__main__":
 			
 	checkAgents(agents)
 
-	pprint(agents)
-	
 	with open(out_file, "w") as outfile:
 		json.dump(agents, outfile)
+		
+	dttm=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+	print str(sys.argv[0]) + " completed at " + dttm

@@ -1,4 +1,48 @@
 {
-	"flume01": {"host":"aeg-dn01.cloud.hortonworks.com:41010","date":"","status":"", "metrics":{}}, 
-	"flume02": {"host":"aeg-dn01.cloud.hortonworks.com:41011","date":"","status":"", "metrics":{}}
+ "ee_ivgs_flume": {"host":"horflmh03msdc02.ds.dtveng.net:41001","date":"","status":"", "metrics":{}},
+ "ee_ivgs_flume": {"host":"horflmh03msdc03.ds.dtveng.net:41001","date":"","status":"", "metrics":{}},
+ "ee_ivgs_flume": {"host":"horflmh03msdc05.ds.dtveng.net:41000","date":"","status":"", "metrics":{}},
+ 
+ "ee_onetouch_flume": {"host":"horflmh03msdc03.ds.dtveng.net:41011","date":"","status":"", "metrics":{}},
+ "ee_onetouch_flume": {"host":"horflmh03msdc04.ds.dtveng.net:41011","date":"","status":"", "metrics":{}},
+ "ee_onetouch_flume": {"host":"horflmh03msdc05.ds.dtveng.net:41010","date":"","status":"", "metrics":{}},
+ 
+ "ee_dms_flume": {"host":"horflmh03msdc04.ds.dtveng.net:41021","date":"","status":"", "metrics":{}},
+ "ee_dms_flume": {"host":"horflmh03msdc01.ds.dtveng.net:41021","date":"","status":"", "metrics":{}},
+ "ee_dms_flume": {"host":"horflmh03msdc05.ds.dtveng.net:41020","date":"","status":"", "metrics":{}},
+ 
+ "ee_conviva_flume": {"host":"horflmh03msdc01.ds.dtveng.net:41030","date":"","status":"", "metrics":{}},
+ "ee_conviva_flume": {"host":"horflmh03msdc02.ds.dtveng.net:41030","date":"","status":"", "metrics":{}},
+ "ee_conviva_flume": {"host":"horflmh03msdc05.ds.dtveng.net:41030","date":"","status":"", "metrics":{}}, 
+ 
+ "ee_chd_flume": {"host":"horflmh03msdc03.ds.dtveng.net:41051","date":"","status":"", "metrics":{}},
+ "ee_chd_flume": {"host":"horflmh03msdc04.ds.dtveng.net:41051","date":"","status":"", "metrics":{}},
+ "ee_chd_flume": {"host":"horflmh03msdc05.ds.dtveng.net:41050","date":"","status":"", "metrics":{}},
+ 
+ "ee_trx_flume": {"host":"horflmh03msdc04.ds.dtveng.net:41061","date":"","status":"", "metrics":{}},
+ "ee_trx_flume": {"host":"horflmh03msdc01.ds.dtveng.net:41061","date":"","status":"", "metrics":{}},
+ "ee_trx_flume": {"host":"horflmh03msdc06.ds.dtveng.net:41060","date":"","status":"", "metrics":{}},
+ 
+ "ee_nat_flume": {"host":"horflmh03msdc01.ds.dtveng.net:41071","date":"","status":"", "metrics":{}},
+ "ee_nat_flume": {"host":"horflmh03msdc02.ds.dtveng.net:41071","date":"","status":"", "metrics":{}},
+ "ee_nat_flume": {"host":"horflmh03msdc06.ds.dtveng.net:41070","date":"","status":"", "metrics":{}},
+ 
+ "ee_stb_flume": {"host":"horflmh03msdc02.ds.dtveng.net:41081","date":"","status":"", "metrics":{}},
+ "ee_stb_flume": {"host":"horflmh03msdc03.ds.dtveng.net:41081","date":"","status":"", "metrics":{}},
+ "ee_stb_flume": {"host":"horflmh03msdc06.ds.dtveng.net:41080","date":"","status":"", "metrics":{}},
+ 
+ "ee_hic2_flume": {"host":"horflmh03msdc03.ds.dtveng.net:41091","date":"","status":"", "metrics":{}},
+ "ee_hic2_flume": {"host":"horflmh03msdc04.ds.dtveng.net:41091","date":"","status":"", "metrics":{}},
+ "ee_hic2_flume": {"host":"horflmh03msdc06.ds.dtveng.net:41091","date":"","status":"", "metrics":{}},
+ 
+ "ee_ams_flume": {"host":"horflmh03msdc01.ds.dtveng.net:51001","date":"","status":"", "metrics":{}},
+ "ee_ams_flume": {"host":"horflmh03msdc02.ds.dtveng.net:51001","date":"","status":"", "metrics":{}},
+ "ee_ams_flume": {"host":"horflmh03msdc03.ds.dtveng.net:51001","date":"","status":"", "metrics":{}},
+ "ee_ams_flume": {"host":"horflmh03msdc04.ds.dtveng.net:51001","date":"","status":"", "metrics":{}},
+ "ee_ams_flume": {"host":"horflmh03msdc06.ds.dtveng.net:51001","date":"","status":"", "metrics":{}},
+ 
+ "ee_hic2hbase_flume": {"host":"horflmh03msdc04.ds.dtveng.net:51011","date":"","status":"", "metrics":{}},
+ "ee_hic2hbase_flume": {"host":"horflmh03msdc01.ds.dtveng.net:51011","date":"","status":"", "metrics":{}},
+ "ee_hic2hbase_flume": {"host":"horflmh03msdc06.ds.dtveng.net:51010","date":"","status":"", "metrics":{}},
+ "ee_ita_flume": {"host":"horflmh03msdc05.ds.dtveng.net:50030","date":"","status":"", "metrics":{}}
 }
